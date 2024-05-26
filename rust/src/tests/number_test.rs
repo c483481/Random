@@ -16,7 +16,6 @@ fn check_number() {
 
     for test in tests {
         let result = random_number(test.min, test.max);
-        println!("testing");
         assert!(result >= test.min || result <= test.max)
     }
 }
