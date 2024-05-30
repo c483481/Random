@@ -41,3 +41,40 @@ func TestRandomNumber(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkRandomNumber(b *testing.B) {
+	tests := []struct {
+		name string
+		min  int
+		max  int
+	}{
+		{
+			name: "_test 1",
+			min:  1,
+			max:  5,
+		},
+		{
+			name: "_test 2",
+			min:  3,
+			max:  5,
+		},
+		{
+			name: "_test 3",
+			min:  2,
+			max:  10,
+		},
+		{
+			name: "_test 4",
+			min:  100,
+			max:  200,
+		},
+	}
+
+	for _, test := range tests {
+		b.Run(test.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				random.Int(test.min, test.max)
+			}
+		})
+	}
+}

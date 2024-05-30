@@ -37,3 +37,35 @@ func TestRandomString(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkRandomString(b *testing.B) {
+	tests := []struct {
+		name  string
+		input int
+	}{
+		{
+			name:  "_test 1",
+			input: 5,
+		},
+		{
+			name:  "_test 2",
+			input: 9,
+		},
+		{
+			name:  "_test 3",
+			input: 15,
+		},
+		{
+			name:  "_test 4",
+			input: 30,
+		},
+	}
+	for _, test := range tests {
+		b.Run(test.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				random.String(test.input)
+			}
+		})
+	}
+
+}
