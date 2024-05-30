@@ -50,6 +50,7 @@ async function main() {
     await bench.warmup();
     await bench.run();
 
+    console.log("Random number result");
     console.table(bench.table());
 }
 
