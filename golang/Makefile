@@ -9,3 +9,6 @@ test:
 
 watch_test:
 	go tool cover -html=coverage.out
+
+bench:
+	go test -v -run=NotMathUnitTest -bench=. ./_test
